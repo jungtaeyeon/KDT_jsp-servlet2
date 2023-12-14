@@ -1,0 +1,98 @@
+2에서 변경해 볼 것들....
+
+1. Action이라는 인터페이스 이름을 스프링 레거시에서 사용되는 Controller이름으로 변경해 본다
+
+2. FrontMVC라는 이름에서 ActionServlet이름으로 변경해 본다
+스프링에서 사용하는 응답 객체 String으로 사용해 본다
+
+ViewResolver지원함
+upmu[]
+pageMove[]
+Object수렴하는 설계
+ModelAndView설계 -  model계층 광고
+String - text/plain
+json - application/json
+
+1)redirect:./noticeList.jsp
+
+2)forward:./noticeList.jsp
+
+3)/WEB-INF/jsp/notice/noticeList.jsp
+
+3. 클래스 갯수를 늘린다 BoardDao.java
+BoardController.java
+BoardLogic.java
++  Logic과 Dao가 합쳐진 이 부분이 => 모델계층: xxx.Dao패턴도 포함된다. - 퍼시스턴스 계층
+BoardDao.java
+BoardVO.java
+
+4. 페이지 네비게이션 처리실습
+
+
+POJO -> 스프링 컨테이너(레거시-5.0) -> 스프링 부트
+
+데이터 영속성지원하는 코드
+
+분석단계
+1. before(AS-IS) - 업무분석, 데이터분석, 요구사항정의
+
+2.after(TO-BE) - 방향수립
+
+설계단계
+개념모델링 - 주제영역 정의, 핵심 엔티티 정의
+논리모델링 - 엔티티정의, 관계정의, 속성 정의
+물리모델링 - 테이블설계, 무결성 설계, 인덱스 설계
+
+왜 XXXDao클래스를 추가하는가?
+
+JPA(Java Persistence API)란?
+
+ORM Framework - Hibernate
+myBatis -> HIbernate
+:객체와 DB테이블 간의 연결을 해주는 프레임워크
+: 객체모델과 관계형 모델의 차이를 해소하기
+
+
+
+1. XXXXController -> 서블릿이 아니어도 괜찮다.
+: 그래서 Controller 인터페이스를 추가해 본다.
+: 누가 서블릿 이지?? -> ActionServlet.java - pojo1에서의 FrontController(전처리 지원 - 관여) -> 스프링에서 DispatcherServlet과 동급
+
+2. doGet, doPost, doPut, doDelete -> Restful API에서 지원하는 메소드를 오버라이딩 함
+: 405번이 발동하면 메소드 이름이 틀렸을 때 !
+: 화면이 없이도 post방식을 테스트할 수 있다 - postman
+: body옵션 선택함
+: 내려갈때(서블릿에서 컨트롤러를 결정받는) -> upmu[0] = workname, upmu[1] = 메소드이름 + 디폴트 뷰 이름으로 사용해보자
+form-data -> <form method="post" action="/notice/noticeInsert.gd"/>
+-> BoardController로 갈지, 아니면 QnaController로 갈지, MemberController로 갈 것 인지 결정해야 함
+-> upmu[0] 의 workname으로 어떤 컨트롤러 클래스를 주입받을건지 결정한다.
+-> methodname, viewname - upmu[1] 
+
+
+텍스트 VS 바이너리
+문자+숫자 - 바이너리 타입일 때
+문자+문자 - 텍스트 에디터 - 사람이 눈으로 볼 수 있는 정보
+숫자 -> 문자로 전환처리 
+
+
+한글깨짐이 발생하였을 때
+- 왜 한글이 꺠지는 걸까??
+Tomcat은 인코딩타입이 8859_1이 디폴트 이다.
+-> 다국어는 utf-8
+
+get방식 한글처리 - server.xml -> 포트번호8000번인 <connector URIEncoding=utf-8> -> URI에 한글이 포함될 때 !
+
+post방식 한글처리 - web.xml문서에 filter옵션을 추가하여 한글처리를 할 수 있다!
+
+
+jsp 페이지의 배포 위치가 두 군데 이다.
+webapp/board/여기
+WEB-INF/jsp/board/여기
+
+WEB-INF는 url을 통해서는 페이지 접근이 불가능 하다.
+보안상 해당 페이지가 노출되는 것이 문제가 된다면 여기에 배포할 것!!!!
+
+
+
+
+

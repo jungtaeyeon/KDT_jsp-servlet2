@@ -1,0 +1,12 @@
+1에서 변경해 볼 것들..
+
+1. Action이라는 인터페이스 이름을 스프링 레거시에서 사용되는 Controller이름으로 변경해 본다.
+
+2. FrontMVC라는 이름에서 ActionServlet이름으로 변경해 본다.
+	스프링에서 사용하는 응답 객체 String으로 사용해 본다.
+
+1) redirect:./noticeList.jsp
+
+2) forward:./noticeList.jsp
+
+3) /WEB-INF/jsp/notice/noticeList.jsp

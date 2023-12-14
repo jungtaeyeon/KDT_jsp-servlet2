@@ -1,0 +1,45 @@
+package com.example.demo.pojo2;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import org.apache.log4j.Logger;
+
+// Restful API란 무엇인가??
+// 전송방식 -> 바이너리 -> UI솔루션이 지원하는 모드중에 한가지
+@SuppressWarnings("serial")
+public class ActionServlet extends HttpServlet {
+	Logger logger = Logger.getLogger(ActionServlet.class);
+	
+	protected void doService(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		
+	}
+	
+	// 삭제
+	@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		doService(req, res);
+	}
+
+	// 쿼리스트링으로 값을 넘길 때 - 링크, header, 제한적
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		doService(req, res);
+	}
+	
+	// body에 값을 넘길 때 - 서버인터셉트를 안당한다, 무조건 서버 전달, 제한이 없다 - 바이너리 타입도 담을 수 있다(첨부파일도 가능)
+	// 첨부파일을 담을때는 무조건 post방식 이여야 한다. - enctype="multipart/form-data" - 바이너리로 전달(문자+숫자의 조합) - 이미지 포함 가능
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		doService(req, res);
+	}
+	
+	// 수정
+	@Override
+	protected void doPut(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		doService(req, res);
+	}
+}

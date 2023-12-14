@@ -1,0 +1,18 @@
+1) ActionForward(pojo1) -> String(pojo2) -> Object(pojo3)
+Object(pojo3) -> ModelAndView클래스 모방하기 - 스프링에서 지원하는 Model
+
+2) FrontMVC(pojo1)*.gd -> ActionServlet(pojo2)*.gd2 -> ActionSupport(pojo3)*.gd3
+
+3) ActionServlet에서 BoardController로 넘어갈 때 메소드 설계가 안됨 
+if문은 별로다.
+-> HandlerMapping 클래스를 설계해 본다. -> 여기서 if문을 가져가고 QnAController에서는
+메소드마다 request객체와 response객체를 사용할 수 있도록 구조를 변경해 본다.
+
+4) 응답처리
+: 요청을 받아주는 클래스와 응답이 나가는 페이지를 분리해 본다.
+: if문으로 하였던 부분인데 개선해 본다.
+-> pageMove[0] = redirect  pageMove[1] = /board/boardList
+위를 ViewResolver클래스로 설계해 본다.
+
+JSON형식으로 반환하는 로직을 추가해 본다.
+-> 스프링에서 @ResponseBody 모방해 보기

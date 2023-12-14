@@ -1,0 +1,16 @@
+package com.vo;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data // @Getter + @Setter
+@NoArgsConstructor
+public class BoradVO {
+	int b_no;
+	String b_title;
+	String b_writer; 
+	String b_content;    
+	int b_hiit;
+	String b_date;
+	String b_file;
+}

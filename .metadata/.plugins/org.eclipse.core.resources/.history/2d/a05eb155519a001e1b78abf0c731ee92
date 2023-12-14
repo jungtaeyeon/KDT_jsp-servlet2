@@ -1,0 +1,2 @@
+ActionForward(pojo1) -> String(pojo2) -> Object(pojo3)
+Object(pojo3) -> ModelAndView클래스 모방하기 - 스프링에서 지원하는 Model

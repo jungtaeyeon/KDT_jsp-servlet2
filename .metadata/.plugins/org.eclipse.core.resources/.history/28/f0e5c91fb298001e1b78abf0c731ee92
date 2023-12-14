@@ -1,0 +1,9 @@
+package com.example.demo.pojo2;
+
+public class BoardVOTest {
+
+	public static void main(String[] args) {
+		
+	}
+
+}
